@@ -88,7 +88,7 @@ export const ar: AppStrings = {
     errWrong: 'كلمة المرور التي أدخلتها غير صحيحة.',
   },
   twoFa: {
-    title: (step) => `المصادقة الثنائية مطلوبة (الخطوة ${step}/3)`,
+    title: 'المصادقة الثنائية مطلوبة',
     description: (email, phone) =>
       `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
     label: 'رمز التحقق الثنائي',
@@ -100,6 +100,8 @@ export const ar: AppStrings = {
     errInvalid: 'يرجى إدخال رمز 2FA صالح مكوّن من 6 أو 8 أرقام.',
     errSend: 'تعذر إرسال رمز المصادقة. يرجى المحاولة لاحقًا.',
     errVerify: 'تعذر التحقق من رمز 2FA. يرجى المحاولة مرة أخرى.',
+    retryErrorExpired: (minutes, seconds) =>
+      `انتهت صلاحية رمز المصادقة. يرجى المحاولة مرة أخرى بعد ${minutes} دقيقة و${seconds} ثانية.`,
     retryError: (minutes, seconds) =>
       `الرمز الذي أدخلته غير صحيح. يرجى المحاولة مرة أخرى بعد ${minutes} دقيقة و${seconds} ثانية.`,
   },

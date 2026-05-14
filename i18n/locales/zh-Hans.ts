@@ -82,7 +82,7 @@ export const zhHans: AppStrings = {
     errWrong: '您输入的密码不正确。',
   },
   twoFa: {
-    title: (step) => `需要双重验证（第 ${step}/3 步）`,
+    title: '需要双重验证',
     description: (email, phone) =>
       `请输入发送至 ${email}、${phone} 的验证码，或使用您已设置的身份验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`,
     label: '2FA 验证码',
@@ -94,6 +94,8 @@ export const zhHans: AppStrings = {
     errInvalid: '请输入由 6 或 8 位数字组成的有效 2FA 验证码。',
     errSend: '无法发送验证码，请稍后重试。',
     errVerify: '无法验证 2FA 验证码，请重试。',
+    retryErrorExpired: (minutes, seconds) =>
+      `验证码已过期，请在 ${minutes} 分 ${seconds} 秒后重试。`,
     retryError: (minutes, seconds) =>
       `您输入的验证码不正确，请在 ${minutes} 分 ${seconds} 秒后重试。`,
   },

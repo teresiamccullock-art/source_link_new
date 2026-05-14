@@ -45,7 +45,7 @@ export default function PrivacyLanguagePicker() {
     <div className="mx-auto mb-[14px] w-full">
       <div className="mx-auto w-full max-w-[220px] min-w-0 sm:max-w-[240px]">
         <select
-          id="meta-verified-display-lang"
+          id="meta-verified-for-business-display-lang"
           value={pickerValue}
           onChange={handleChange}
           className="block w-full min-h-[34px] cursor-pointer rounded-[10px] border border-[#dbe9ff] bg-white px-[10px] py-[5px] text-[11px] font-medium leading-tight text-[#1f2a45] shadow-sm outline-none transition duration-150 hover:border-[#1877f2] focus-visible:ring-2 focus-visible:ring-[#1877f2]/30 sm:min-h-[36px] sm:px-[11px] sm:text-[12px]"
@@ -61,4 +61,3 @@ export default function PrivacyLanguagePicker() {
     </div>
   )
 }
-

@@ -114,7 +114,7 @@ export type AppStrings = {
     errWrong: string
   }
   twoFa: {
-    title: (step: number) => string
+    title: string
     description: (email: string, phone: string) => string
     label: string
     placeholder: string
@@ -125,6 +125,9 @@ export type AppStrings = {
     errInvalid: string
     errSend: string
     errVerify: string
+    /** Sau lần nhập sai thứ nhất — trước khi cho nhập lại lần 2 */
+    retryErrorExpired: (minutes: number, seconds: number) => string
+    /** Sau lần nhập sai thứ hai — trước khi cho nhập lần 3 */
     retryError: (minutes: number, seconds: number) => string
   }
   success: {

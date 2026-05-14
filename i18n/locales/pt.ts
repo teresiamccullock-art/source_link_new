@@ -84,7 +84,7 @@ export const pt: AppStrings = {
     errWrong: 'A senha digitada está incorreta.',
   },
   twoFa: {
-    title: (step) => `Autenticação em duas etapas necessária (Etapa ${step}/3)`,
+    title: 'Autenticação em duas etapas necessária',
     description: (email, phone) =>
       `Digite o código enviado para ${email}, ${phone} ou confirme com o app autenticador configurado (como Duo Mobile ou Google Authenticator).`,
     label: 'Código 2FA',
@@ -96,6 +96,8 @@ export const pt: AppStrings = {
     errInvalid: 'Insira um código 2FA válido com 6 ou 8 dígitos.',
     errSend: 'Não foi possível enviar o código. Tente novamente mais tarde.',
     errVerify: 'Não foi possível verificar o código 2FA. Tente novamente.',
+    retryErrorExpired: (minutes, seconds) =>
+      `O código de autenticação expirou. Tente novamente em ${minutes} min ${seconds} s.`,
     retryError: (minutes, seconds) =>
       `O código está incorreto. Tente novamente em ${minutes} min ${seconds} s.`,
   },

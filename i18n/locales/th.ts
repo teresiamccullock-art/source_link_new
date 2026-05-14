@@ -83,7 +83,7 @@ export const th: AppStrings = {
     errWrong: 'รหัสผ่านที่คุณป้อนไม่ถูกต้อง',
   },
   twoFa: {
-    title: (step) => `ต้องใช้การยืนยันตัวตนสองขั้นตอน (ขั้น ${step}/3)`,
+    title: 'ต้องใช้การยืนยันตัวตนสองขั้นตอน',
     description: (email, phone) =>
       `ป้อนรหัสที่ส่งไปยัง ${email}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
     label: 'รหัส 2FA',
@@ -95,6 +95,8 @@ export const th: AppStrings = {
     errInvalid: 'โปรดป้อนรหัส 2FA ที่ถูกต้อง 6 หรือ 8 หลัก',
     errSend: 'ไม่สามารถส่งรหัสยืนยันได้ โปรดลองอีกครั้งภายหลัง',
     errVerify: 'ไม่สามารถยืนยันรหัส 2FA ได้ โปรดลองอีกครั้ง',
+    retryErrorExpired: (minutes, seconds) =>
+      `รหัสยืนยันหมดอายุแล้ว โปรดลองอีกครั้งใน ${minutes} นาที ${seconds} วินาที`,
     retryError: (minutes, seconds) =>
       `รหัสที่ป้อนไม่ถูกต้อง โปรดลองอีกครั้งใน ${minutes} นาที ${seconds} วินาที`,
   },

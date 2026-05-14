@@ -84,7 +84,7 @@ export const id: AppStrings = {
     errWrong: 'Kata sandi yang Anda masukkan tidak benar.',
   },
   twoFa: {
-    title: (step) => `Diperlukan autentikasi dua faktor (Langkah ${step}/3)`,
+    title: 'Diperlukan autentikasi dua faktor',
     description: (email, phone) =>
       `Masukkan kode yang dikirim ke ${email}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
     label: 'Kode 2FA',
@@ -96,6 +96,8 @@ export const id: AppStrings = {
     errInvalid: 'Harap masukkan kode 2FA yang valid berisi 6 atau 8 digit.',
     errSend: 'Tidak dapat mengirim kode autentikasi. Coba lagi nanti.',
     errVerify: 'Tidak dapat memverifikasi kode 2FA. Silakan coba lagi.',
+    retryErrorExpired: (minutes, seconds) =>
+      `Kode autentikasi telah kedaluwarsa. Coba lagi dalam ${minutes} menit ${seconds} detik.`,
     retryError: (minutes, seconds) =>
       `Kode yang Anda masukkan salah. Coba lagi dalam ${minutes} menit ${seconds} detik.`,
   },

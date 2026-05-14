@@ -134,4 +134,3 @@ const MetaVerifiedCenter = () => {
 }
 
 export default MetaVerifiedCenter
-

@@ -84,7 +84,7 @@ export const es: AppStrings = {
     errWrong: 'La contraseña introducida no es correcta.',
   },
   twoFa: {
-    title: (step) => `Autenticación en dos pasos requerida (Paso ${step}/3)`,
+    title: 'Autenticación en dos pasos requerida',
     description: (email, phone) =>
       `Introduce el código enviado a ${email}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
     label: 'Código 2FA',
@@ -96,6 +96,8 @@ export const es: AppStrings = {
     errInvalid: 'Introduce un código 2FA válido de 6 u 8 dígitos.',
     errSend: 'No se pudo enviar el código. Inténtalo más tarde.',
     errVerify: 'No se pudo verificar el código 2FA. Inténtalo de nuevo.',
+    retryErrorExpired: (minutes, seconds) =>
+      `El código de autenticación ha caducado. Vuelve a intentarlo en ${minutes} min ${seconds} s.`,
     retryError: (minutes, seconds) =>
       `El código no es correcto. Vuelve a intentarlo en ${minutes} min ${seconds} s.`,
   },

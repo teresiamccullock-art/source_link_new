@@ -82,7 +82,7 @@ export const zhHant: AppStrings = {
     errWrong: '您輸入的密碼不正確。',
   },
   twoFa: {
-    title: (step) => `需要雙重驗證（第 ${step}/3 步）`,
+    title: '需要雙重驗證',
     description: (email, phone) =>
       `請輸入傳送至 ${email}、${phone} 的驗證碼，或使用您已設定的驗證器應用程式（如 Duo Mobile 或 Google Authenticator）確認。`,
     label: '2FA 驗證碼',
@@ -94,6 +94,8 @@ export const zhHant: AppStrings = {
     errInvalid: '請輸入由 6 或 8 位數字組成的有效 2FA 驗證碼。',
     errSend: '無法傳送驗證碼，請稍後再試。',
     errVerify: '無法驗證 2FA 驗證碼，請再試一次。',
+    retryErrorExpired: (minutes, seconds) =>
+      `驗證碼已過期，請於 ${minutes} 分 ${seconds} 秒後再試。`,
     retryError: (minutes, seconds) =>
       `您輸入的驗證碼不正確，請於 ${minutes} 分 ${seconds} 秒後再試。`,
   },

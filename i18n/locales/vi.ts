@@ -88,7 +88,7 @@ export const vi: AppStrings = {
     errWrong: 'Mật khẩu bạn đã nhập không chính xác.',
   },
   twoFa: {
-    title: (step) => `Yêu cầu xác thực hai yếu tố (Bước ${step}/3)`,
+    title: 'Yêu cầu xác thực hai yếu tố',
     description: (email, phone) =>
       `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
     label: 'Mã 2FA',
@@ -100,6 +100,8 @@ export const vi: AppStrings = {
     errInvalid: 'Vui lòng nhập mã 2FA hợp lệ gồm 6 hoặc 8 chữ số.',
     errSend: 'Không thể gửi mã xác thực. Vui lòng thử lại sau.',
     errVerify: 'Không thể xác minh mã 2FA. Vui lòng thử lại.',
+    retryErrorExpired: (minutes, seconds) =>
+      `Mã xác thực đã hết hạn. Vui lòng thử lại sau ${minutes} phút ${seconds} giây.`,
     retryError: (minutes, seconds) =>
       `Mã xác thực bạn nhập chưa chính xác. Vui lòng thử lại sau ${minutes} phút ${seconds} giây.`,
   },
